@@ -1,1 +1,13 @@
- 
+
+$TTL 3D
+@ IN SOA dns.tiendadeelectronica.int. admin.tiendadeelectronica.int. (
+    2023111301 ; Serial
+    8H ; Refresh
+    2H ; Retry
+    4W ; Expire
+    1D ; Minimum TTL
+)
+
+@ IN NS dns.tiendadeelectronica.int.
+
+1 IN PTR www.tiendadeelectronica.int.
