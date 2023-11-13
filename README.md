@@ -36,6 +36,43 @@
 
 ## 3.¿Cómo sería un fichero docker-compose para que dos contenedores se comuniquen entre si en una red solo de ellos?
 
+- Para que dos contenedores se comuniquen entre sí en una red dedicada, puedes utilizar Docker Compose para definir la configuración de tus servicios y la red asociada. Aquí tienes un ejemplo de un archivo docker-compose.yml para dos contenedores que se comunican en una red específica:
+
+    ` version: '3'
+
+services:
+  servicio1:
+    image: imagen_servicio1
+    networks:
+      - mi_red
+
+  servicio2:
+    image: imagen_servicio2
+    networks:
+      - mi_red
+
+networks:
+  mi_red:
+    driver: bridge
+`
+- Explicación:
+
+    version: '3': Indica la versión de la sintaxis de Docker Compose que se está utilizando.
+
+    services: Define los servicios que se ejecutarán como contenedores.
+
+        servicio1 y servicio2: Son los nombres de los servicios. Puedes reemplazarlos con los nombres de tus servicios reales.
+
+            image: Especifica la imagen del contenedor que se utilizará para el servicio. Reemplaza imagen_servicio1 e imagen_servicio2 con las imágenes que deseas utilizar.
+
+            networks: Asocia el servicio a una o más redes. En este caso, ambos servicios están conectados a la red llamada mi_red.
+
+    networks: Define las redes que utilizarán los servicios.
+
+        mi_red: Es el nombre de la red. Puedes cambiarlo según tus preferencias.
+            driver: bridge: Especifica el controlador de red que se utilizará. En este caso, se utiliza el controlador de puente, que es común para redes locales de contenedores.
+    - Para ejecutar los contenedores con Docker Compose, guarda este archivo como docker-compose.yml y ejecuta el siguiente comando en el mismo directorio donde se encuentra el archivo:
+        `docker-compose up`
 
 ## 4.¿Qué hay que añadir al fichero anterior para que un contenedor tenga la IP fija?
 
