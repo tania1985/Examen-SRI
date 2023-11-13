@@ -13,11 +13,26 @@
  3. Entrypoint o CMD con un shell interactivo:
 
     - Si estás creando tu propia imagen de Docker, asegúrate de que el ENTRYPOINT o CMD del Dockerfile incluya un shell interactivo, por ejemplo:
-    > ENTRYPOINT ["/bin/bash"]
+    `ENTRYPOINT ["/bin/bash"]`
     - Luego, al ejecutar el contenedor, obtendrás automáticamente una sesión interactiva de bash
 
 ## 2. En el contenedor anterior con que opciones tiene que haber sido arrancado para poder interactuar con las entradas y salidas del contenedor
 
+    1. Opción -i (interactive):
+
+    - Esta opción mantiene la entrada estándar abierta incluso si no está conectada, lo que permite la interactividad.
+      > Ejemplo:
+        `docker run -i nombre_del_contenedor /bin/bash`
+    2. Opción -t (tty):
+
+    - Esta opción asigna un pseudo terminal (TTY) al contenedor. Es necesario para tener un shell interactivo.
+      > Ejemplo:
+            `docker run -it nombre_del_contenedor /bin/bash`
+    3.Opción --rm:
+
+    - Esta opción elimina automáticamente el contenedor después de que se detiene, lo que es útil para limpiar recursos temporales.
+        > Ejemplo:
+            `docker run -it --rm nombre_del_contenedor /bin/bash`
 
 ## 3.¿Cómo sería un fichero docker-compose para que dos contenedores se comuniquen entre si en una red solo de ellos?
 
