@@ -177,6 +177,7 @@ version: '3'
 `dig @localhost -t TXT tiendadeelectronica.int`
 
 ## 10.Realiza el apartado en la máquina virtual con DNS
+
 - zona tiendadeelectronica.int
  `$TTL 3D
   @ IN SOA dns.tiendadeelectronica.int. admin.tiendadeelectronica.int. (
@@ -209,19 +210,21 @@ version: '3'
 1 IN PTR www.tiendadeelectronica.int.`
 
 - Creación de las dos zonas
-` zone "tiendadeelectronica.int" {
+
+`zone "tiendadeelectronica.int" {
 	type master;
 	file "/var/lib/bind/tiendadeelectronica.int";
 	allow-query {
 		any;
 		};
-	};
+	};``
 zone "16.172.in-addr.arpa" {
     type master;
     file "/etc/bind/zones/16.172.in-addr.arpa";
 };
 `
 - Docker-compose
+
     `version: '3'
         services:
      dns:
