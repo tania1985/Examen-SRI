@@ -129,6 +129,17 @@ version: '3'
 - Este mapeo de puertos es útil cuando necesitas exponer servicios de contenedores al mundo exterior o cuando estás conectando varios servicios a través de la red de Docker Compose.
 
 ## 7.¿Para que sirve el registro CNAME? Pon un ejemplo
+- El registro CNAME (Canonical Name) en DNS (Sistema de Nombres de Dominio) se utiliza para establecer alias o nombres canónicos para un dominio. Básicamente, un registro CNAME asocia un nombre de dominio con otro nombre de dominio, permitiendo que una máquina sea conocida por más de un nombre.
+
+> Ejemplo:
+
+- Supongamos que tienes un sitio web llamado www.ejemplo.com, y también tienes una versión móvil de tu sitio que quieres que sea accesible a través de mobil.ejemplo.com. En lugar de configurar y mantener dos direcciones IP diferentes para estos dos nombres, puedes utilizar un registro CNAME.
+
+- El registro CNAME se vería algo así:
+`mobil.ejemplo.com. IN CNAME www.ejemplo.com.`
+- Esto significa que mobil.ejemplo.com es un alias de www.ejemplo.com. Cuando alguien intenta acceder a mobil.ejemplo.com, el servidor DNS redirige la solicitud a la dirección IP asociada con www.ejemplo.com.
+
+- En resumen, el registro CNAME es útil cuando deseas que múltiples nombres de dominio se resuelvan a la misma dirección IP. Esto facilita la gestión y el mantenimiento, ya que si la dirección IP cambia, solo necesitas actualizar un solo registro en lugar de varios. Además, simplifica la administración de servicios que pueden tener múltiples nombres de dominio asociados.
 
 
 ## 8.¿Como puedo hacer para que la configuración de un contenedor DNS no se borre si creo otro contenedor?
