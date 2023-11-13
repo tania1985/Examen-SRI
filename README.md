@@ -103,7 +103,7 @@ version: '3'
 ## 5.¿Que comando de consola puedo usar para saber las ips de los contenedores anteriores? Filtra todo lo que puedas la salida.
 - Puedes utilizar el siguiente comando de consola para obtener las direcciones IP de los contenedores definidos en tu archivo docker-compose.yml:
         `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)`
-    -Este comando utiliza docker ps -q para obtener solo los IDs de los contenedores en ejecución y luego utiliza docker inspect para obtener y formatear las direcciones IP de cada contenedor.
+- Este comando utiliza docker ps -q para obtener solo los IDs de los contenedores en ejecución y luego utiliza docker inspect para obtener y formatear las direcciones IP de cada contenedor.
 
 - Si estás trabajando con un solo contenedor y no con Docker Compose, simplemente sustituye $(docker ps -q) con el ID o el nombre del contenedor que estás inspeccionando.
 ## 6.¿Cual es la funcionalidad del apartado "ports" en docker compose?
