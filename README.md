@@ -172,4 +172,8 @@ version: '3'
     - Comprueba que todo funciona con el comando "dig"
     - Muestra en los logs que el servicio arranca correctamente
 
-## 10.Realiza el apartado 9 en la máquina virtual con DNS
+`dig @localhost www.tiendadeelectronica.int`
+`dig @localhost owncloud.tiendadeelectronica.int`
+`dig @localhost -t TXT tiendadeelectronica.int`
+## 10.Realiza el apartado en la máquina virtual con DNS
+
