@@ -141,9 +141,28 @@ version: '3'
 
 - En resumen, el registro CNAME es útil cuando deseas que múltiples nombres de dominio se resuelvan a la misma dirección IP. Esto facilita la gestión y el mantenimiento, ya que si la dirección IP cambia, solo necesitas actualizar un solo registro en lugar de varios. Además, simplifica la administración de servicios que pueden tener múltiples nombres de dominio asociados.
 
-
 ## 8.¿Como puedo hacer para que la configuración de un contenedor DNS no se borre si creo otro contenedor?
 
+- Para asegurarte de que la configuración de un contenedor DNS persista incluso si creas otro contenedor, puedes utilizar volúmenes de Docker. Los volúmenes son una forma de persistir y compartir datos entre contenedores y el host. Aquí hay un ejemplo de cómo podrías hacerlo:
+
+- Supongamos que estás ejecutando un contenedor DNS llamado "mi_dns_container". Puedes usar un volumen para almacenar la configuración y asegurarte de que persista entre reinicios o recreaciones del contenedor. Asumiendo que el contenedor tiene una carpeta /config donde almacena su configuración, aquí está cómo podrías hacerlo:
+
+    1. Crea un volumen:
+         `docker volume create mi_dns_volume`
+    2. Ejecuta el contenedor DNS con el volumen:
+        `docker run -d --name mi_dns_container -v mi_dns_volume:/config imagen_del_contenedor_dns`
+    - En este comando:
+
+    -d: Ejecuta el contenedor en segundo plano.
+    --name mi_dns_container: Asigna un nombre al contenedor para que sea fácil referenciarlo.
+    -v mi_dns_volume:/config: Monta el volumen mi_dns_volume en el directorio /config dentro del contenedor.
+    imagen_del_contenedor_dns: Reemplázalo con el nombre de la imagen de tu contenedor DNS.
+
+    3. Al crear un nuevo contenedor DNS:
+
+- Cuando crees un nuevo contenedor DNS, asegúrate de montar el mismo volumen:
+    `docker run -d --name otro_dns_container -v mi_dns_volume:/config otra_imagen_del_contenedor_dns`
+    - Esto asegurará que ambos contenedores compartan la misma configuración almacenada en el volumen mi_dns_volume.
 
 ## 9. Añade una zona tiendadeelectronica.int en tu docker DNS que tenga
 
