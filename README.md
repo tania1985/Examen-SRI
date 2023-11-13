@@ -1,7 +1,7 @@
 # Examen-SRI
 
 ## 1. Explica métodos para 'abrir' una consola/shell a un contenedor que se está ejecutando
-
+ 1. docker exec:
 
 ## 2. En el contenedor anterior con que opciones tiene que haber sido arrancado para poder interactuar con las entradas y salidas del contenedor
 
