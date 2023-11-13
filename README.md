@@ -4,11 +4,11 @@
  1. docker exec:
     - Utiliza el comando docker exec para ejecutar un comando dentro de un contenedor en ejecución.
     > Ejemplo:
-        `docker exec -it nombre_del_contenedor /bin/bash`
+     `docker exec -it nombre_del_contenedor /bin/bash`
  2. docker attach:
     - Utiliza el comando docker attach para conectarte a la terminal estándar del contenedor.
     > Ejemplo:
-        `docker attach nombre_del_contenedor`
+    `docker attach nombre_del_contenedor`
     - Ten en cuenta que docker attach no inicia un nuevo shell, sino que se conecta al proceso principal del contenedor. Puede no ser adecuado para todos los casos.
  3. Entrypoint o CMD con un shell interactivo:
 
@@ -22,23 +22,24 @@
 
     - Esta opción mantiene la entrada estándar abierta incluso si no está conectada, lo que permite la interactividad.
       > Ejemplo:
-        `docker run -i nombre_del_contenedor /bin/bash`
+`docker run -i nombre_del_contenedor /bin/bash`
     2. Opción -t (tty):
 
     - Esta opción asigna un pseudo terminal (TTY) al contenedor. Es necesario para tener un shell interactivo.
       > Ejemplo:
-            `docker run -it nombre_del_contenedor /bin/bash`
+          
+`docker run -it nombre_del_contenedor /bin/bash`
     3.Opción --rm:
 
     - Esta opción elimina automáticamente el contenedor después de que se detiene, lo que es útil para limpiar recursos temporales.
         > Ejemplo:
-            `docker run -it --rm nombre_del_contenedor /bin/bash`
+`docker run -it --rm nombre_del_contenedor /bin/bash`
 
 ## 3.¿Cómo sería un fichero docker-compose para que dos contenedores se comuniquen entre si en una red solo de ellos?
 
 - Para que dos contenedores se comuniquen entre sí en una red dedicada, puedes utilizar Docker Compose para definir la configuración de tus servicios y la red asociada. Aquí tienes un ejemplo de un archivo docker-compose.yml para dos contenedores que se comunican en una red específica:
 
-    ` version: '3'
+`version: '3'
 
 services:
   servicio1:
@@ -53,8 +54,8 @@ services:
 
 networks:
   mi_red:
-    driver: bridge
-`
+    driver: bridge``
+
 - Explicación:
 
     version: '3': Indica la versión de la sintaxis de Docker Compose que se está utilizando.
@@ -112,7 +113,7 @@ version: '3'
  - El apartado "ports" en un archivo de Docker Compose se utiliza para especificar y mapear los puertos entre el host y el contenedor. Permite exponer y redirigir puertos desde el contenedor hacia el host o entre contenedores.
 
 > Aquí tienes un ejemplo básico de cómo se utiliza el apartado "ports" en un archivo docker-compose.yml:
-     ` version: '3'
+    ` version: '3'
 
         services:
             servicio1:
