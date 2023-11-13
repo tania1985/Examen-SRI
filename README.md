@@ -106,8 +106,27 @@ version: '3'
 - Este comando utiliza docker ps -q para obtener solo los IDs de los contenedores en ejecución y luego utiliza docker inspect para obtener y formatear las direcciones IP de cada contenedor.
 
 - Si estás trabajando con un solo contenedor y no con Docker Compose, simplemente sustituye $(docker ps -q) con el ID o el nombre del contenedor que estás inspeccionando.
+
 ## 6.¿Cual es la funcionalidad del apartado "ports" en docker compose?
 
+ - El apartado "ports" en un archivo de Docker Compose se utiliza para especificar y mapear los puertos entre el host y el contenedor. Permite exponer y redirigir puertos desde el contenedor hacia el host o entre contenedores.
+
+> Aquí tienes un ejemplo básico de cómo se utiliza el apartado "ports" en un archivo docker-compose.yml:
+     ` version: '3'
+
+        services:
+            servicio1:
+            image: imagen_servicio1
+        ports:
+            - "8080:80"
+`
+- El apartado "ports" especifica la asignación de puertos entre el host y el contenedor. En este caso, el puerto 80 del contenedor se mapea al puerto 8080 del host. El formato es "puerto-del-host:puerto-del-contenedor".
+
+- Esto significa que puedes acceder al servicio dentro del contenedor a través del puerto 8080 en el host. Si el servicio dentro del contenedor escucha en el puerto 80, el mapeo de puertos permite que el tráfico enviado al puerto 8080 del host se redirija al puerto 80 del contenedor.
+
+- Puedes especificar múltiples mapeos de puertos para un servicio si es necesario. Además, si no especificas el puerto del host (por ejemplo, "8080"), Docker Compose asignará automáticamente un puerto disponible en el host.
+
+- Este mapeo de puertos es útil cuando necesitas exponer servicios de contenedores al mundo exterior o cuando estás conectando varios servicios a través de la red de Docker Compose.
 
 ## 7.¿Para que sirve el registro CNAME? Pon un ejemplo
 
