@@ -221,19 +221,19 @@ zone "16.172.in-addr.arpa" {
 };
 `
 - Docker-compose
-`version: '3'
+    `version: '3'
 
-services:
-  dns:
-    image: sameersbn/bind:latest
-    container_name: dns_server
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-    environment:
+        services:
+     dns:
+        image: sameersbn/bind:latest
+        container_name: dns_server
+     ports:
+         - "53:53/tcp"
+        - "53:53/udp"
+     environment:
       - ROOT_PASSWORD=Prueba-123
       - DNS_FORWARDER=8.8.8.8
-    volumes:
+     volumes:
       - ./conf:/etc/bind
       - ./zonas:/var/lib/bind
 `
