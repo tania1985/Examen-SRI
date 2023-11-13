@@ -176,4 +176,64 @@ version: '3'
 `dig @localhost owncloud.tiendadeelectronica.int`
 `dig @localhost -t TXT tiendadeelectronica.int`
 ## 10.Realiza el apartado en la máquina virtual con DNS
+- zona tiendadeelectronica.int
+ `$TTL 3D
+  @ IN SOA dns.tiendadeelectronica.int. admin.tiendadeelectronica.int. (
+    2023111301 ; Serial
+    8H ; Refresh
+    2H ; Retry
+    4W ; Expire
+    1D ; Minimum TTL
+    )
 
+    @ IN NS dns.tiendadeelectronica.int.
+
+    www IN A 172.16.0.1
+    owncloud IN CNAME www
+    @ TXT "1234ASDF"
+    `
+- zona 16.172.inaddr.arpa.txt
+
+`$TTL 3D
+@ IN SOA dns.tiendadeelectronica.int. admin.tiendadeelectronica.int. (
+    2023111301 ; Serial
+    8H ; Refresh
+    2H ; Retry
+    4W ; Expire
+    1D ; Minimum TTL
+)
+
+@ IN NS dns.tiendadeelectronica.int.
+
+1 IN PTR www.tiendadeelectronica.int.`
+
+- Creación de las dos zonas
+` zone "tiendadeelectronica.int" {
+	type master;
+	file "/var/lib/bind/tiendadeelectronica.int";
+	allow-query {
+		any;
+		};
+	};
+zone "16.172.in-addr.arpa" {
+    type master;
+    file "/etc/bind/zones/16.172.in-addr.arpa";
+};
+`
+- Docker-compose
+`version: '3'
+
+services:
+  dns:
+    image: sameersbn/bind:latest
+    container_name: dns_server
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    environment:
+      - ROOT_PASSWORD=Prueba-123
+      - DNS_FORWARDER=8.8.8.8
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+`
