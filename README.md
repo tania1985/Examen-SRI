@@ -175,6 +175,7 @@ version: '3'
 `dig @localhost www.tiendadeelectronica.int`
 `dig @localhost owncloud.tiendadeelectronica.int`
 `dig @localhost -t TXT tiendadeelectronica.int`
+
 ## 10.Realiza el apartado en la máquina virtual con DNS
 - zona tiendadeelectronica.int
  `$TTL 3D
@@ -222,7 +223,6 @@ zone "16.172.in-addr.arpa" {
 `
 - Docker-compose
     `version: '3'
-
         services:
      dns:
         image: sameersbn/bind:latest
@@ -235,5 +235,4 @@ zone "16.172.in-addr.arpa" {
       - DNS_FORWARDER=8.8.8.8
      volumes:
       - ./conf:/etc/bind
-      - ./zonas:/var/lib/bind
-`
+      - ./zonas:/var/lib/bind`
