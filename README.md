@@ -79,31 +79,33 @@ networks:
 - En Docker Compose, puedes asignar una dirección IP específica a un contenedor utilizando la opción ipv4_address en la configuración del servicio. Aquí hay un ejemplo de cómo puedes modificar el archivo docker-compose.yml para asignar una dirección IP fija a un contenedor:
 version: '3'
 
-` services:
-  servicio1:
-    image: imagen_servicio1
-    networks:
+    ` services:
+        servicio1:
+        image: imagen_servicio1
+        networks:
       mi_red:
         ipv4_address: 172.18.0.2  # Puedes cambiar la dirección IP según tus necesidades
 
-  servicio2:
-    image: imagen_servicio2
-    networks:
-      mi_red:
+     servicio2:
+        image: imagen_servicio2
+     networks:
+        mi_red:
         ipv4_address: 172.18.0.3  # Puedes cambiar la dirección IP según tus necesidades
 
-networks:
-  mi_red:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
+     networks:
+        mi_red:
+        driver: bridge
+        ipam:
+        driver: default
+     config:
         - subnet: 172.18.0.0/16
 `
-
 ## 5.¿Que comando de consola puedo usar para saber las ips de los contenedores anteriores? Filtra todo lo que puedas la salida.
+- Puedes utilizar el siguiente comando de consola para obtener las direcciones IP de los contenedores definidos en tu archivo docker-compose.yml:
+        `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)`
+    -Este comando utiliza docker ps -q para obtener solo los IDs de los contenedores en ejecución y luego utiliza docker inspect para obtener y formatear las direcciones IP de cada contenedor.
 
-
+- Si estás trabajando con un solo contenedor y no con Docker Compose, simplemente sustituye $(docker ps -q) con el ID o el nombre del contenedor que estás inspeccionando.
 ## 6.¿Cual es la funcionalidad del apartado "ports" en docker compose?
 
 
