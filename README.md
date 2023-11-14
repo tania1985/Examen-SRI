@@ -172,7 +172,9 @@ version: '3'
     - un registro de texto con el contenido "1234ASDF"
     - Comprueba que todo funciona con el comando "dig"
     - Muestra en los logs que el servicio arranca correctamente
-    
+
+### Imagenes de logs y digs
+
 ![Imagen de logs](imagenes/logs.png)
 ![Imagen de logs2](imagenes/logs2.png)
 ![Imgen de dig1](imagenes/dig1.png)
