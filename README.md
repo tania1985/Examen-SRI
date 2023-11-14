@@ -249,3 +249,5 @@ zone "16.172.in-addr.arpa" {
      volumes:
       - ./conf:/etc/bind
       - ./zonas:/var/lib/bind`
+![Imagen de dig](imagenes/mv1.png)
+![Imagen de dig](imagenes/mv2png)
