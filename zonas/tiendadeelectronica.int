@@ -8,6 +8,7 @@ $TTL 3D
 )
 
 @ IN NS dns.tiendadeelectronica.int.
+ns IN A 172.16.0.1
 
 www IN A 172.16.0.1
 owncloud IN CNAME www
