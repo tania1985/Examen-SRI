@@ -251,3 +251,5 @@ zone "16.172.in-addr.arpa" {
       - ./zonas:/var/lib/bind`
 ![Imagen de dig](imagenes/mv1.png)
 ![Imagen de dig](imagenes/mv2png)
+    
+![Imagen de dig](imagenes/logsmv.png)
