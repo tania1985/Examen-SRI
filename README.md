@@ -172,6 +172,7 @@ version: '3'
     - un registro de texto con el contenido "1234ASDF"
     - Comprueba que todo funciona con el comando "dig"
     - Muestra en los logs que el servicio arranca correctamente
+![Imagen de logs](//home/asir2/Imágenes/Screenshot_20231114_161741.png)
 
 `dig @localhost www.tiendadeelectronica.int`
 `dig @localhost owncloud.tiendadeelectronica.int`
